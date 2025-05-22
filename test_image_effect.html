@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>漂亮的图片立体边框效果</title>
+<meta http-equiv="content-type" content="text/html;charset=gb2312">
+<!--把下面代码加到<head>与</head>之间-->
+<style type="text/css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff; /* 纯白色背景 */
+}
+
+.image-container {
+    display: inline-block;
+    margin: 50px;
+}
+
+/* 图片样式 */
+img {
+    border-radius: 15px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 简单四周阴影效果 */
+.shadow_effect {
+    padding: 15px;
+    background: #ffffff; /* 白色背景 */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 简单四周阴影 */
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+</style>
+<!-- 引入html2canvas库 -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+<!--把下面代码加到<body>与</body>之间-->
+<div class="image-container" id="imageToCapture">
+    <img src="image.png" class="shadow_effect">
+</div>
+
+<div class="button-container">
+    <button class="download-btn" onclick="captureImage()">获取渲染图片</button>
+</div>
+
+<script>
+function captureImage() {
+    // 获取要截图的DOM元素
+    const element = document.getElementById('imageToCapture');
+    
+    // 使用html2canvas捕获元素
+    html2canvas(element, {
+        backgroundColor: null,  // 透明背景
+        scale: 2,  // 提高图片质量
+        logging: false,
+        useCORS: true  // 允许跨域图片
+    }).then(canvas => {
+        // 将canvas转换为图片URL
+        const imgData = canvas.toDataURL('image/png');
+        
+        // 创建下载链接
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'shadow_effect_image.png';
+        link.click();
+    });
+}
+</script>
+</body>
+</html> 

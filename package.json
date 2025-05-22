@@ -1,0 +1,25 @@
+{
+  "name": "picgo-shadow-effect",
+  "version": "1.0.0",
+  "description": "常驻Chromium引擎服务，提供阴影效果截图API",
+  "main": "chrome-service.js",
+  "scripts": {
+    "start": "node chrome-service.js",
+    "start:dev": "nodemon chrome-service.js",
+    "install-service": "python service_installer.py install",
+    "uninstall-service": "python service_installer.py uninstall",
+    "service-status": "python service_installer.py status",
+    "start-chrome": "start_playwright_service.bat",
+    "enable-autostart": "python setup_autostart.py enable",
+    "disable-autostart": "python setup_autostart.py disable"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "node-windows": "^1.0.0-beta.8",
+    "playwright": "^1.39.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+} 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图片阴影效果</title>
+<style>
+  body { 
+    margin: 0; 
+    padding: 0;
+    background-color: transparent; 
+  }
+  .image-container {
+    display: inline-block; /* 确保容器大小由图片决定 */
+    padding: 30px; /* 为阴影留出空间 */
+    box-sizing: border-box;
+  }
+  .shadow_effect {
+    display: block;
+    max-width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+  }
+</style>
+</head>
+<body>
+  <div class="image-container">
+    <img id="targetImage" class="shadow_effect" src="" alt="待处理图片" />
+  </div>
+  <script>
+    // 这个函数会被Playwright调用，用于设置图片
+    function setImageSource(imageSrc) {
+      const img = document.getElementById('targetImage');
+      img.src = imageSrc;
+      
+      // 返回一个Promise，在图片加载完成后resolve
+      return new Promise((resolve, reject) => {
+        img.onload = () => resolve(true);
+        img.onerror = () => reject(new Error('图片加载失败'));
+      });
+    }
+  </script>
+</body>
+</html> 
