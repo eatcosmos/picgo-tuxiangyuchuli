@@ -4,11 +4,9 @@
 
 ## windows
 
- `npm run start-chrome # 会启动一个命令行启动一个Chrome界面，Playwright通过`
+`npm run start-chrome # 会启动一个命令行启动一个Chrome界面，通过`
 
-`enable-autostart`
-
-`node playwright-screenshot.js`
+`node playwright-screenshot.js test\PixPin_2025-05-22_16-35-37.png # 直接预处理原图`
 
 ## Linux
 
