@@ -8,6 +8,8 @@
 
 `node playwright-screenshot.js test\PixPin_2025-05-22_16-35-37.png # 直接预处理原图`
 
+`git config --global http.proxy http://127.0.0.1:10809`
+
 ## Linux
 
 ## 功能特点
